@@ -1,5 +1,6 @@
 # Sunshine Guardian
-ElleHacks 2023 - Summer Challenge ☀️
+ElleHacks 2024 - Summer Challenge ☀️
+(Top 10 Hack out of 248 Participants)
 
 Check out our [DevPost](https://devpost.com/software/sunshine-guardian) for a video demo and a more detailed description of the process
 
