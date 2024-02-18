@@ -23,6 +23,7 @@ import SettingsSunscreen from "./screens/SettingsSunscreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
 
+import { LocationProvider } from './context/LocationContext';
 import { ReapplyEveryContext } from "./context/ReapplyEveryContext";
 import { UvIndexContext } from "./context/UvIndexContext";
 import { SpfLevelContext } from "./context/SpfLevelContext";
@@ -49,120 +50,122 @@ const App = () => {
   }
 
   return (
-    <ReapplyEveryContext.Provider value={{ reapplyEvery, setReapplyEvery }}>
-      <UvIndexContext.Provider value={{ uvIndex, setUvIndex }}>
-        <SpfLevelContext.Provider value={{ spfLevel, setSpfLevel }}>
-          <TemperatureTodayContext.Provider
-            value={{ temperatureToday, setTemperatureToday }}
-          >
-            <GreetingUserContext.Provider
-              value={{ greetingUser, setGreetingUser }}
+    <LocationProvider>
+      <ReapplyEveryContext.Provider value={{ reapplyEvery, setReapplyEvery }}>
+        <UvIndexContext.Provider value={{ uvIndex, setUvIndex }}>
+          <SpfLevelContext.Provider value={{ spfLevel, setSpfLevel }}>
+            <TemperatureTodayContext.Provider
+              value={{ temperatureToday, setTemperatureToday }}
             >
-              <ReapplyTimeContext.Provider
-                value={{ reapplyTime, setReapplyTime }}
+              <GreetingUserContext.Provider
+                value={{ greetingUser, setGreetingUser }}
               >
-                <>
-                  <NavigationContainer>
-                    {hideSplashScreen ? (
-                      <Stack.Navigator
-                        initialRouteName="Homescreen"
-                        screenOptions={{ headerShown: false }}
-                      >
-                        <Stack.Screen
-                          name="GetStarted"
-                          component={GetStarted}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="Homescreen"
-                          component={Homescreen}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="ReminderScreen"
-                          component={ReminderScreen}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedSunscreen"
-                          component={GetStartedSunscreen}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsMatch"
-                          component={SettingsMatch}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsMatch1"
-                          component={SettingsMatch1}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsSkinComplexion"
-                          component={SettingsSkinComplexion}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsLocation"
-                          component={SettingsLocation}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedName"
-                          component={GetStartedName}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedLocation"
-                          component={GetStartedLocation}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedComplexion"
-                          component={GetStartedComplexion}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedSunscreenM"
-                          component={GetStartedSunscreenM}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedSkinType"
-                          component={GetStartedSkinType}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="GetStartedMatch"
-                          component={GetStartedMatch}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="Loading"
-                          component={Loading}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsMain"
-                          component={SettingsMain}
-                          options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                          name="SettingsSunscreen"
-                          component={SettingsSunscreen}
-                          options={{ headerShown: false }}
-                        />
-                      </Stack.Navigator>
-                    ) : null}
-                  </NavigationContainer>
-                </>
-              </ReapplyTimeContext.Provider>
-            </GreetingUserContext.Provider>
-          </TemperatureTodayContext.Provider>
-        </SpfLevelContext.Provider>
-      </UvIndexContext.Provider>
-    </ReapplyEveryContext.Provider>
+                <ReapplyTimeContext.Provider
+                  value={{ reapplyTime, setReapplyTime }}
+                >
+                  <>
+                    <NavigationContainer>
+                      {hideSplashScreen ? (
+                        <Stack.Navigator
+                          initialRouteName="GetStarted"
+                          screenOptions={{ headerShown: false }}
+                        >
+                          <Stack.Screen
+                            name="GetStarted"
+                            component={GetStarted}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="Homescreen"
+                            component={Homescreen}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="ReminderScreen"
+                            component={ReminderScreen}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedSunscreen"
+                            component={GetStartedSunscreen}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsMatch"
+                            component={SettingsMatch}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsMatch1"
+                            component={SettingsMatch1}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsSkinComplexion"
+                            component={SettingsSkinComplexion}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsLocation"
+                            component={SettingsLocation}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedName"
+                            component={GetStartedName}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedLocation"
+                            component={GetStartedLocation}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedComplexion"
+                            component={GetStartedComplexion}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedSunscreenM"
+                            component={GetStartedSunscreenM}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedSkinType"
+                            component={GetStartedSkinType}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="GetStartedMatch"
+                            component={GetStartedMatch}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="Loading"
+                            component={Loading}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsMain"
+                            component={SettingsMain}
+                            options={{ headerShown: false }}
+                          />
+                          <Stack.Screen
+                            name="SettingsSunscreen"
+                            component={SettingsSunscreen}
+                            options={{ headerShown: false }}
+                          />
+                        </Stack.Navigator>
+                      ) : null}
+                    </NavigationContainer>
+                  </>
+                </ReapplyTimeContext.Provider>
+              </GreetingUserContext.Provider>
+            </TemperatureTodayContext.Provider>
+          </SpfLevelContext.Provider>
+        </UvIndexContext.Provider>
+      </ReapplyEveryContext.Provider>
+    </LocationProvider>
   );
 };
 export default App;

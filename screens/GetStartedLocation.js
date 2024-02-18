@@ -1,23 +1,32 @@
 import * as React from "react";
+import { useState } from "react";
 import { Pressable, StyleSheet, View, Text, TextInput } from "react-native";
+import { useLocationContext } from './context/LocationContext';
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontFamily, Color, FontSize } from "../GlobalStyles";
 
 const GetStartedLocation = () => {
+  const { setLocation } = useLocationContext();
+  const [inputText, setInputText] = useState(''); 
   const navigation = useNavigation();
+
+  const handleNextPress = () => {
+    setLocation(inputText); // Update the global location context
+    navigation.navigate('GetStartedComplexion'); // Navigate to the next screen
+  };
 
   return (
     <View style={[styles.getStartedLocation, styles.iconLayout]}>
       <Pressable
         style={[styles.search, styles.searchLayout1]}
-        onPress={() => navigation.navigate("GetStartedComplexion")}
+        onPress={{handleNextPress}}
       >
         <View style={styles.searchChild} />
       </Pressable>
       <Pressable
         style={styles.next}
-        onPress={() => navigation.navigate("GetStartedComplexion")}
+        onPress={{handleNextPress}}
       >
         <Text style={styles.next1}>Next</Text>
       </Pressable>
@@ -34,6 +43,8 @@ const GetStartedLocation = () => {
       <TextInput
         style={[styles.search2, styles.searchPosition1]}
         textAlign="center"
+        value={inputText}
+        onChangeText={setInputText}
       />
       <Text style={[styles.helpUsIdentify, styles.helpUsIdentifyTypo]}>
         Help us identify the UV index
