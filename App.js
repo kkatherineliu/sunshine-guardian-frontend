@@ -73,7 +73,8 @@ const App = () => {
                         <NavigationContainer>
                           {hideSplashScreen ? (
                             <Stack.Navigator
-                              initialRouteName="GetStarted"
+                              initialRouteName="Loading" // changed to Loading to test the sunscreen recommendation
+                              // normally, set initialRouteName="GetStarted"
                               screenOptions={{ headerShown: false }}
                             >
                               <Stack.Screen

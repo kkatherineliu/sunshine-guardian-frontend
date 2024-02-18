@@ -2,53 +2,23 @@ import * as React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import { useLocationContext } from './context/LocationContext';
-import { useSkinTypeContext } from './context/SkinTypeContext';
-import { useFitzContext } from './context/FitzContext';
+import { useSkinTypeContext } from '../context/SkinTypeContext';
 import { Color, FontSize, FontFamily, Border } from "../GlobalStyles";
 
 const GetStartedSkinType = () => {
   const navigation = useNavigation();
 
-  // commented out to work on layout first
-  // const updateType = (skin_type) => {
-  //   setSharedSkinType(skin_type) // not sure why its throwing errors
-  // }
-
-  // const generateRecommendation = () => {
-  //   const { skin_type } = useSkinTypeContext(); // skin type
-  //   const { location } = useLocationContext(); // location
-  //   const { fitzpatrick } = useFitzContext(); // fitzpatrick skin type
-
-  //   // flask endpoint for reference
-  //   // # Produce sunscreen recommendation
-  //   // @app.route('/sunscreen', methods=['POST'])
-  //   // def create_sunscreen():
-  //   // try:
-  //   //     skin_type = request.json.get('skin_type')
-  //   //     complexion = request.json.get('complexion')
-  //   //     fitzpatrick = request.json.get('fitzpatrick')
-  //   //     response = recommend_sunscreen(fitzpatrick, skin_type, location)
-  //   //     return jsonify(response), 200
-  //   // except Exception as e:
-  //   //     return jsonify({'error': str(e)}), 500
-
-  //   navigation.navigate("Loading")
-  //   // configure so that it stays on that screen for X amount of time (or until the response is generated)
-
-  // };
-
   return (
     <View style={styles.getStartedSkinType}>
       <Pressable
         style={[styles.search, styles.searchLayout]}
-        onPress={generateRecommendation}
+        onPress={navigation.navigate("Loading")}
       >
         <View style={[styles.searchChild, styles.searchLayout]} />
       </Pressable>
       <Pressable
         style={styles.findMySunscreenContainer}
-        onPress={generateRecommendation}
+        onPress={navigation.navigate("Loading")}
       >
         <Text style={styles.findMySunscreen}>Find my sunscreen</Text>
       </Pressable>
@@ -91,7 +61,7 @@ const GetStartedSkinType = () => {
       <Text style={[styles.combination, styles.normalTypo]}>Combination</Text>
       <Text style={[styles.oily, styles.dryTypo]}>Oily</Text>
       
-      <Pressable onPress={updateType("oily skin")}>
+      <Pressable onPress={setSharedSkinType("oily skin")}>
         <Image
           style={[styles.image2Icon, styles.copy31Layout]}
           contentFit="cover"
@@ -99,7 +69,7 @@ const GetStartedSkinType = () => {
         />
       </Pressable>
 
-      <Pressable onPress={updateType("dry skin")}>
+      <Pressable onPress={setSharedSkinType("dry skin")}>
         <Image
           style={styles.copy1Icon}
           contentFit="cover"
@@ -107,7 +77,7 @@ const GetStartedSkinType = () => {
         />
       </Pressable>
 
-      <Pressable onPress={updateType("sensitive skin")}>
+      <Pressable onPress={setSharedSkinType("sensitive skin")}>
         <Image
           style={styles.copy41}
           contentFit="cover"
@@ -115,7 +85,7 @@ const GetStartedSkinType = () => {
         />
       </Pressable>
       
-      <Pressable onPress={updateType("normal skin")}>
+      <Pressable onPress={setSharedSkinType("normal skin")}>
         <Image
           style={[styles.copy31, styles.copy31Layout]}
           contentFit="cover"
@@ -123,7 +93,7 @@ const GetStartedSkinType = () => {
         />
       </Pressable>
 
-      <Pressable onPress={updateType("acne-prone skin")}>
+      <Pressable onPress={setSharedSkinType("acne-prone skin")}>
         <Image
           style={styles.copy54}
           contentFit="cover"
@@ -131,7 +101,7 @@ const GetStartedSkinType = () => {
         />
       </Pressable>
       
-      <Pressable onPress={updateType("combination skin")}>
+      <Pressable onPress={setSharedSkinType("combination skin")}>
         <Image
           style={styles.copy24}
           contentFit="cover"

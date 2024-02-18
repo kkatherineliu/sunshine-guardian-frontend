@@ -1,9 +1,45 @@
 import * as React from "react";
+import { useEffect } from 'react';
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
+import { useLocationContext } from '../context/LocationContext';
+import { useSkinTypeContext } from '../context/SkinTypeContext';
+import { useFitzContext } from '../context/FitzContext';
+import { useNavigation } from "@react-navigation/native";
 import { FontSize, FontFamily, Color, Border } from "../GlobalStyles";
 
+async function recommendSunscreen() {
+  const navigation = useNavigation();
+  
+  // currently set to default "acne-prone skin" "Toronto, ON", "Type 1"
+  const { skin_type } = useSkinTypeContext(); // skin type
+  const { location } = useLocationContext(); // location
+  const { fitzpatrick } = useFitzContext(); // fitzpatrick skin type
+
+  const payload = {
+    skin_type,
+    location,
+    fitzpatrick,
+  };
+
+  try {
+    const response = await fetch('http://127.0.0.1:5000/sunscreen', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+    console.log('Success:', data);
+    navigation.navigate("GetStartedMatch", { data });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 const Loading = () => {
+  recommendSunscreen()
   return (
     <View style={styles.loading}>
       <Text style={styles.findingYourMatch}>Finding your match...</Text>
