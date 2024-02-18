@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState } from 'react';
 
 const FitzContext = createContext();
 
-export const SkinTypeProvider = ({ children }) => {
-  const [fitzpatrick, setSharedFitz] = useState('');
+export const FitzProvider = ({ children }) => {
+  const [fitzpatrick, setSharedFitz] = useState('Type 1');
 
   return (
     <FitzContext.Provider value={{ fitzpatrick, setSharedFitz }}>

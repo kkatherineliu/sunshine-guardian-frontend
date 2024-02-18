@@ -4,7 +4,8 @@ import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 
-const GetStartedMatch = () => {
+const GetStartedMatch = ({ route }) => {
+  const { data } = route.params;
   const navigation = useNavigation();
 
   return (
@@ -24,18 +25,14 @@ const GetStartedMatch = () => {
         </Text>
       </Pressable>
       <Text style={styles.weFoundA}>We found a match</Text>
-      <Text style={[styles.spf50, styles.spf50Typo]}>SPF 50+</Text>
+      <Text style={[styles.spf50, styles.spf50Typo]}>{data.spf}</Text>
       <Text style={[styles.beautyOfJoseon, styles.spf50Typo]}>
-        Beauty of Joseon Relief Sun: Rice + Probiotics
+        {data.name}
       </Text>
       <Text style={styles.loremIpsumDolor}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua.
+        {data.explanation}
       </Text>
-      <Text style={[styles.normalSkin, styles.normalSkinTypo]}>
-        Normal skin
+      <Text style={[styles.normalSkin, styles.normalSkinTypo]}> SPF
       </Text>
       <Image
         style={styles.type2Icon}
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   },
   normalSkinTypo: {
     fontFamily: FontFamily.interBold,
-    fontWeight: "700",
+    fontWeight: "1000",
     textAlign: "center",
   },
   spf50Typo: {
@@ -122,7 +119,7 @@ const styles = StyleSheet.create({
   },
   normalSkin: {
     top: 527,
-    left: 189,
+    left: 225,
     fontSize: FontSize.size_6xl,
     color: Color.colorDimgray,
     textAlign: "center",
