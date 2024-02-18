@@ -12,7 +12,5 @@ export const LocationProvider = ({ children }) => {
   );
 };
 
-
-
 // Custom hook to use the location context
 export const useLocationContext = () => useContext(LocationContext);

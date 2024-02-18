@@ -2,8 +2,11 @@ import * as React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
+import { useFitzContext } from './context/LocationContext';
 import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 
+/// this one needs working on for the buttons to actually be scrollable
+/// OR just change the layout
 const GetStartedComplexion = () => {
   const navigation = useNavigation();
 
