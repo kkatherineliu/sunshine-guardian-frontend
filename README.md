@@ -1,3 +1,6 @@
+# Sunshine Guardian
+ElleHacks 2023 - Summer Challenge
+
 Repo for backend code: [Sunshine Guardian](https://github.com/kkatherineliu/sunshine-guardian)
 
 Check out our [DevPost!](https://devpost.com/software/sunshine-guardian) 
