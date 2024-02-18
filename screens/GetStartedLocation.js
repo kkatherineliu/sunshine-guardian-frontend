@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Pressable, StyleSheet, View, Text, TextInput } from "react-native";
-import { useLocationContext } from './context/LocationContext';
+import { useLocationContext } from '../context/LocationContext';
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { Border, FontFamily, Color, FontSize } from "../GlobalStyles";

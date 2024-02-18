@@ -2,7 +2,7 @@ import * as React from "react";
 import { Pressable, StyleSheet, View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import { useFitzContext } from './context/LocationContext';
+import { useFitzContext } from '../context/FitzContext';
 import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 
 /// this one needs working on for the buttons to actually be scrollable

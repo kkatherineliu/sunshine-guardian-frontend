@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from 'react';
 const SkinTypeContext = createContext();
 
 export const SkinTypeProvider = ({ children }) => {
-  const [sharedSkinType, setSharedSkinType] = useState('');
+  const [skin_type, setSharedSkinType] = useState('');
 
   return (
-    <SkinTypeContext.Provider value={{ sharedSkinType, setSharedSkinType }}>
+    <SkinTypeContext.Provider value={{ skin_type, setSharedSkinType }}>
       {children}
     </SkinTypeContext.Provider>
   );

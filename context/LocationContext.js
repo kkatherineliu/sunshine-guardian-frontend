@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState } from 'react';
 const LocationContext = createContext();
 
 export const LocationProvider = ({ children }) => {
-  const [sharedLocation, setSharedLocation] = useState('');
+  const [location, setSharedLocation] = useState('');
 
   return (
-    <LocationContext.Provider value={{ sharedLocation, setSharedLocation }}>
+    <LocationContext.Provider value={{ location, setSharedLocation }}>
       {children}
     </LocationContext.Provider>
   );
